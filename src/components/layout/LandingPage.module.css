@@ -1,0 +1,70 @@
+.landing {
+  position: relative;
+  background-image: url("../../Assets/coverPhoto.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.landing__description {
+  width: 40%;
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #303030;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+}
+.landing__description h2 {
+  margin: 10px auto 20px auto;
+  padding: 0;
+  font-size: 2rem;
+}
+.landing__description p {
+  margin: 0;
+  padding: 0px 5px 10px 5px;
+  font-size: 1.1rem;
+}
+@media (max-width: 776px) {
+  .landing__description h2 {
+    font-size: 1.4rem;
+  }
+  .landing__description p {
+    font-size: 0.8rem;
+  }
+  .landing__description {
+    width: 80%;
+  }
+  .landing {
+    background-image: url("../../Assets/brooke-lark--F_5g8EEHYE-unsplash.jpg");
+  }
+}
+.landing__order {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  animation: go-down infinite 1s;
+}
+.landing__order svg {
+  color: #8a2b06;
+  font-size: 2.5rem;
+}
+@keyframes go-down {
+  50% {
+    padding-top: 30px;
+  }
+  100% {
+    padding-top: 0px;
+  }
+}
