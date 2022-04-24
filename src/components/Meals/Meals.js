@@ -41,6 +41,7 @@ const Meals = (props) => {
             <li key={idx}>
               {
                 <MealItem
+                  id={idx}
                   mealName={item.name}
                   mealDescription={item.description}
                   mealPrice={item.price}

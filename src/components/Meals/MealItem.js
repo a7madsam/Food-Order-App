@@ -7,12 +7,13 @@ const MealItem = (props) => {
       <div className={styles[`meal-item__description`]}>
         <span>{props.mealName}</span>
         <span>{props.mealDescription}</span>
-        <span>${props.mealPrice}</span>
+        <span>${props.mealPrice.toFixed(2)}</span>
       </div>
       <form>
         <Input
           label="Amount"
           input={{
+            id: props.id,
             type: "number",
             min: "1",
             max: "5",
