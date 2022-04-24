@@ -2,7 +2,12 @@ import React from 'react'
 import styles from './LandingPage.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesDown } from '@fortawesome/free-solid-svg-icons'
-const LandingPage = () => {
+const LandingPage = (props) => {
+    const clickHandler = () => {
+        let offset = document.getElementById("meals-area").offsetTop;
+        window.scrollTo(0, offset);
+        props.onClickToGoDown();
+    }
     return (
         <div className={styles[`landing`]}>
             <div className={styles[`landing__description`]}>
@@ -13,7 +18,7 @@ const LandingPage = () => {
                     <br /><br />
                     All our meals are cooked with high-quality ingredients, just-in-time and of course by experienced chefs!</p>
             </div>
-            <button className={styles[`landing__order`]}><FontAwesomeIcon icon={faAnglesDown} /></button>
+            <button className={styles[`landing__order`]} onClick={clickHandler}><FontAwesomeIcon icon={faAnglesDown} /></button>
         </div >
     );
 }
