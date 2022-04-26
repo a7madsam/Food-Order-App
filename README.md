@@ -22,7 +22,7 @@ npm start
 
 The Application Runs on **localhost:3000**
 
-<h2>Preview:</h2>
+<h2>Preview</h2>
 <strong>Live Demo : <a href="https://snazzy-nasturtium-b5c942.netlify.app">Food Order App</a></strong></br></br>
 <img width="1267" alt="Screenshot 2022-04-26 223654" src="https://user-images.githubusercontent.com/63476270/165379171-cb5a4e5a-65db-4813-a51c-976ba67cc81b.png">
 <img width="1266" alt="Screenshot 2022-04-26 223732" src="https://user-images.githubusercontent.com/63476270/165379539-d3ab1752-79e1-4322-af78-05878eaded45.png">
