@@ -19,6 +19,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.cart ul {
   overflow-y: auto;
 }
 .cart__total-amount {
@@ -68,4 +70,15 @@
 .close-btn {
   background-color: white;
   color: #751e07;
+}
+.close-btn:hover {
+  color: white;
+  background-color: #751e07;
+}
+.show_content {
+  transition: 0.5s;
+  top: 0 !important;
+}
+.center {
+  text-align: center;
 }

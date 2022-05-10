@@ -5,16 +5,24 @@ import { useEffect, useState } from "react";
 const Meals = (props) => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setError] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
         "https://foodorderproject-528a6-default-rtdb.firebaseio.com/meals.json"
       );
+      if (!response.ok) {
+        throw new Error("There is something wrong !");
+      }
       const data = await response.json();
       setMeals(data);
       setIsLoading(false);
+      setError(null);
     };
-    fetchData();
+    fetchData().catch((error) => {
+      setIsLoading(false);
+      setError(error.message);
+    });
   }, []);
   return (
     <Card
@@ -24,7 +32,8 @@ const Meals = (props) => {
       }`}
     >
       {isLoading && <p className={styles["loading"]}>Meals is Loading...</p>}
-      {!isLoading && (
+      {isError && <p>{isError}</p>}
+      {!isLoading && !isError && (
         <ul>
           {meals.map((item, idx) => {
             return (
