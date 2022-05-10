@@ -4,7 +4,7 @@ import MealItem from "./MealItem";
 import { useEffect, useState } from "react";
 const Meals = (props) => {
   const [meals, setMeals] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -12,6 +12,7 @@ const Meals = (props) => {
       );
       const data = await response.json();
       setMeals(data);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
@@ -22,22 +23,25 @@ const Meals = (props) => {
         props.addAnimation ? styles["apply-animation"] : ""
       }`}
     >
-      <ul>
-        {meals.map((item, idx) => {
-          return (
-            <li key={idx}>
-              {
-                <MealItem
-                  id={idx}
-                  mealName={item.name}
-                  mealDescription={item.description}
-                  mealPrice={item.price}
-                />
-              }
-            </li>
-          );
-        })}
-      </ul>
+      {isLoading && <p className={styles["loading"]}>Meals is Loading...</p>}
+      {!isLoading && (
+        <ul>
+          {meals.map((item, idx) => {
+            return (
+              <li key={idx}>
+                {
+                  <MealItem
+                    id={idx}
+                    mealName={item.name}
+                    mealDescription={item.description}
+                    mealPrice={item.price}
+                  />
+                }
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </Card>
   );
 };

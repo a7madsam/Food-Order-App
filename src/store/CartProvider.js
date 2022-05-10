@@ -54,6 +54,9 @@ const cartReducer = (state, action) => {
     }
     return { items: updatedItems, totalAmount: updatedTotalAmout };
   }
+  if (action.type === "EMPTY_CART") {
+    return defaultCartState;
+  }
   return defaultCartState;
 };
 const CartProvider = (props) => {
@@ -70,11 +73,17 @@ const CartProvider = (props) => {
       id: id,
     });
   };
+  const emptyCart = () => {
+    dispachCart({
+      type: "EMPTY_CART",
+    });
+  };
   let cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount.toFixed(2),
     addItem: addItem,
     removeItem: removeItem,
+    emptyCart: emptyCart,
   };
   return (
     <CartContext.Provider value={cartContext}>

@@ -23,3 +23,7 @@ ul {
 .apply-animation {
   animation: meals-appear 1s ease-out forwards;
 }
+
+.loading {
+  text-align: center;
+}

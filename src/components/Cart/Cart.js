@@ -12,6 +12,25 @@ const Cart = (props) => {
   const removeItemHandler = (id) => {
     cartCtx.removeItem(id);
   };
+  const sendOrderHandler = () => {
+    const sendData = async () => {
+      const response = await fetch(
+        "https://foodorderproject-528a6-default-rtdb.firebaseio.com/orderdItam.json",
+        {
+          method: "POST",
+          body: JSON.stringify(cartCtx.items),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    };
+    sendData();
+    cartCtx.emptyCart();
+    props.hideDialog();
+  };
   return (
     <React.Fragment>
       <div className={styles[`overlay`]} onClick={props.hideDialog}></div>
@@ -41,7 +60,9 @@ const Cart = (props) => {
             Close
           </Button>
           {cartCtx.items.length > 0 && (
-            <Button className={styles[`order-btn`]}>Order</Button>
+            <Button className={styles[`order-btn`]} onClick={sendOrderHandler}>
+              Order
+            </Button>
           )}
         </div>
       </Card>
