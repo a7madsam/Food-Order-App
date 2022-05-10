@@ -2,7 +2,9 @@
 <h2>Description</h2>
 <p>
 A simple & Full responsive React application that customers are allowed to add the foods they want to order to the basket and it works to keep track of all the added foods in terms of price and number.</br>
-The available foods are presented in a beautiful and convenient way for the user
+The available foods are presented in a beautiful and convenient way for the user.</br>
+<b>Update:</b> Now the meal is fetched from Firebase automatically, instead of hard coding.</br>
+<b>Update:</b> Added a form that enables users to add their personal information, submit their requests, and store it in Firebase.</br>
 </p>
 <h2>Cloning and Running the Application in local</h2>
 
