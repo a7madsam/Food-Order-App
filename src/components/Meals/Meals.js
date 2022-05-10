@@ -1,33 +1,20 @@
 import styles from "./Meals.module.css";
 import Card from "../UI/Card";
 import MealItem from "./MealItem";
-const MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-  },
-  {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
-  },
-];
+import { useEffect, useState } from "react";
 const Meals = (props) => {
+  const [meals, setMeals] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        "https://foodorderproject-528a6-default-rtdb.firebaseio.com/meals.json"
+      );
+      const data = await response.json();
+      setMeals(data);
+    };
+    fetchData();
+  }, []);
   return (
     <Card
       id="meals-area"
@@ -36,7 +23,7 @@ const Meals = (props) => {
       }`}
     >
       <ul>
-        {MEALS.map((item, idx) => {
+        {meals.map((item, idx) => {
           return (
             <li key={idx}>
               {
